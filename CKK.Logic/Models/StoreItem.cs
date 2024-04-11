@@ -11,7 +11,11 @@ namespace CKK.Logic.Models
         private Product Product;
         private int Quantity;
 
-        StoreItem(Product product, int quantity);
+        public StoreItem(Product product, int quantity)
+        {
+            this.Product = product;
+            this.Quantity = quantity;
+        }
 
         public int GetQuantity()
         {

@@ -11,7 +11,11 @@ namespace CKK.Logic.Models
         private Product Product;
         private int Quantity;
 
-        ShoppingCartItem(Product product, int quantity);
+        public ShoppingCartItem(Product product, int quantity)
+        {
+            this.Product = product;
+            this.Quantity = quantity;
+        }
 
         public int GetQuantity()
         {
