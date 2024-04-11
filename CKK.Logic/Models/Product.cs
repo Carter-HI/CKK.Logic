@@ -8,37 +8,37 @@ namespace CKK.Logic.Models
 {
     internal class Product
     {
-        private int id;
-        private string name = "";
-        private decimal price;
+        private int _id;
+        private string _name = "";
+        private decimal _price;
 
 
         public void SetId(int id)
         {
-            this.id = id;
+            _id = id;
         }
 
         public int GetId()
         {
-            return this.id;
+            return _id;
         }
         public string GetName()
         {
-            return this.name;
+            return _name;
         }
         public void SetName(string name)
         {
-            this.name = name;
+            _name = name;
         }
 
         public decimal GetPrice()
         {
-            return this.price;
+            return _price;
         }
 
         public void SetPrice(decimal price)
         {
-            this.price = price;
+            _price = price;
         }
     }
 }

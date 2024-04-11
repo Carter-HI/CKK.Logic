@@ -13,27 +13,27 @@ namespace CKK.Logic.Models
 
         public StoreItem(Product product, int quantity)
         {
-            this.Product = product;
-            this.Quantity = quantity;
+            Product = product;
+            Quantity = quantity;
         }
 
         public int GetQuantity()
         {
-            return this.Quantity;
+            return Quantity;
         }
 
         public void SetQuantity(int quantity)
         {
-            this.Quantity = quantity;
+            Quantity = quantity;
         }
 
         public Product GetProduct()
         {
-            return this.Product;
+            return Product;
         }
         public void SetProduct(Product product)
         {
-            this.Product = product;
+            Product = product;
         }
     }
 }
