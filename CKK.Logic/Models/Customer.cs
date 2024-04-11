@@ -15,7 +15,7 @@ namespace CKK.Logic.Models
 
         public int GetId()
         {
-            return id;
+            return _id;
         }
 
         public void SetId(int id)
