@@ -15,11 +15,12 @@ namespace CKK.Logic.Models
         
         public ShoppingCart(Customer cust)
         {
-            return cust;
+            _customer = cust;
         }
         public int GetCustomerId()
         {
-           
+                return _customer.GetId();
+            
         }
         public ShoppingCartItem AddProduct(Product prod)
         {
@@ -61,6 +62,7 @@ namespace CKK.Logic.Models
                 _product3 = new ShoppingCartItem(prod, quantity);
                 return _product3;
             }
+            return null;
         }
         public ShoppingCartItem RemoveProduct(Product prod, int quantity)
         {
@@ -95,6 +97,7 @@ namespace CKK.Logic.Models
                 }
                 return _product3;
             }
+            return null;
         }
         public ShoppingCartItem GetProductById(int id)
         {
@@ -110,6 +113,7 @@ namespace CKK.Logic.Models
             {
                 return _product3;
             }
+            return null;
         }
         public decimal GetTotal()
         {
@@ -126,6 +130,7 @@ namespace CKK.Logic.Models
             {
                 grandtotal += _product3.GetTotal();
             }
+            return grandtotal;
         }
         public ShoppingCartItem GetProduct(int productNum)
         {
@@ -141,6 +146,7 @@ namespace CKK.Logic.Models
             {
                 return _product3;
             }
+            return null;
         }
     }
 }
