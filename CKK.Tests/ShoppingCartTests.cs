@@ -39,9 +39,9 @@ namespace CKK.Tests
             try 
             {
                 Product product = new Product();
-                int expected1 = 0;
+                int expected1 = 0;//not deleted
                 string expected2 = null;
-                decimal expected3 = 0;
+                decimal expected3 = 0;//not deleted
                 //Act
                 product.SetId(expected1);
                 product.SetName(expected2);
@@ -62,7 +62,15 @@ namespace CKK.Tests
         [Fact]
         public void GettingTotal()
         {
-            try { }
+            try 
+            {
+                Product product = new Product();
+                decimal expected = 100;
+                product.SetPrice(expected);
+                decimal total = product.GetPrice();
+
+                Assert.Equal(expected, total);
+            }
             catch
             {
                 throw new XunitException("Total is not accurate to the value that was entered.");
