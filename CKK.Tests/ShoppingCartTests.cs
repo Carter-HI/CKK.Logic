@@ -7,73 +7,71 @@ namespace CKK.Tests
     public class ShoppingCartTests
     {
         [Fact]
-        public void AddingProduct()
+        public void AddingProductTest()
         {
             try
             {
                 //Assemble
-                Product product = new Product();
-                int expected1 = 101;
-                string expected2 = "Apple";
-                decimal expected3 = 1;
+                ShoppingCart myshoppingCart = new ShoppingCart(new Customer { });
+                Product product1 = new Product();
+                product1.SetId(123);
+                myshoppingCart.AddProduct(product1);
+                ShoppingCartItem expectingItem = myshoppingCart.GetProduct(1);
+                int expected = 123;
                 //Act
-                product.SetId(expected1);
-                product.SetName(expected2);
-                product.SetPrice(expected3);
-                int actual1 = product.GetId();
-                string actual2 = product.GetName();
-                decimal actual3 = product.GetPrice();
+                int actual = expectingItem.GetProduct().GetId();
                 //Assert
-                Assert.Equal(expected1, actual1);
-                Assert.Equal(expected2, actual2);
-                Assert.Equal(expected3, actual3);
+                Assert.Equal(expected, actual);
             }
             catch
             {
-                throw new XunitException("The product was not added.");
+                throw new XunitException("The item's id was not added. ");
             }
         }
         [Fact]
-        public void RemovingProduct()
+        public void RemovingProductTest()
         {
-            try 
+            try
             {
-                Product product = new Product();
-                int expected1 = 0;//not deleted
-                string expected2 = null;
-                decimal expected3 = 0;//not deleted
+                //Assemble
+                ShoppingCart myshoppingCart = new ShoppingCart(new Customer { });
+                Product product1 = new Product();
+                int quantity = 0; 
+                product1.SetId(0);
+                myshoppingCart.RemoveProduct(product1, quantity);
+                ShoppingCartItem expectingItem = myshoppingCart.GetProduct(1);
+                int expected = 0;
                 //Act
-                product.SetId(expected1);
-                product.SetName(expected2);
-                product.SetPrice(expected3);
-                int actual1 = product.GetId();
-                string actual2 = product.GetName();
-                decimal actual3 = product.GetPrice();
+                int actual = expectingItem.GetProduct().GetId();
                 //Assert
-                Assert.Equal(expected1, actual1);
-                Assert.Equal(expected2, actual2);
-                Assert.Equal(expected3, actual3);
-            }
-            catch
-            {
-                throw new XunitException("A product was not removed.");
-            }
-        }
-        [Fact]
-        public void GettingTotal()
-        {
-            try 
-            {
-                Product product = new Product();
-                decimal expected = 100;
-                product.SetPrice(expected);
-                decimal total = product.GetPrice();
+                Assert.Equal(expected, actual);
 
-                Assert.Equal(expected, total);
             }
             catch
             {
-                throw new XunitException("Total is not accurate to the value that was entered.");
+                throw new XunitException("The item's id was not removed. ");
+            }
+        }
+        [Fact]
+        public void GetTotalTest()
+        {
+            try
+            {
+                //Assemble
+                ShoppingCart myshoppingCart = new ShoppingCart(new Customer { });
+                Product product1 = new Product();
+                product1.SetId(123);
+                myshoppingCart.AddProduct(product1);
+                ShoppingCartItem expectingItem = myshoppingCart.GetProduct(1);
+                int expected = 123;
+                //Act
+                int actual = expectingItem.GetProduct().GetId();
+                //Assert
+                Assert.Equal(expected, actual);
+            }
+            catch
+            {
+                throw new XunitException("The item's id was not added. ");
             }
         }
     }
