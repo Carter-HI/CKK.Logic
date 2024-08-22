@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,11 +9,13 @@ namespace CKK.Logic.Models
 {
     public class Store
     {
+
+
         private int _id;
         private string _name = "";
-        private Product _product1;
-        private Product _product2;
-        private Product _product3;
+        private List<StoreItem> items = new List<StoreItem>();
+        
+
 
         public int GetId()
         {
@@ -30,73 +33,53 @@ namespace CKK.Logic.Models
         {
             _name = name;
         }
-       public void AddStoreItem(Product prod)
+
+       public void AddStoreItem(Product prod, int quantity)
         {
-            if (_product1 == null)
+            StoreItem foundItem = FindStoreItemById(prod.GetId());
+            if(foundItem != null)
             {
-                _product1 = prod;
+                foundItem.SetQuantity(foundItem.GetQuantity() + quantity);
             }
-            else if (_product2 == null)
+            else
             {
-                _product2 = prod;
-            }
-            else if (_product3 == null)
-            {
-                _product3 = prod;
+                items.Add(new StoreItem(prod, quantity));
             }
         }
-        public void RemoveStoreItem(int productNum)
+        public void RemoveStoreItem(Product prod, int quantity)
         {
-           if (productNum == 1)
+            StoreItem foundItem = FindStoreItemById(prod.GetId());
+            if (foundItem != null)
             {
-                _product1 = null;
-            } 
-           else if (productNum == 2)
-            {
-                _product2 = null;
+                foundItem.SetQuantity(foundItem.GetQuantity() - quantity);
             }
-           else if(productNum == 3)
+            else if (foundItem.Count == 0)
             {
-                _product3 = null;
+                
             }
         }
-        public Product GetStoreItem(int prductNum)
+        public Product GetStoreItem(int productNum)
         {
-            if(prductNum == 1)
+            if(productNum == 1)
             {
-                return _product1;
+                return ;
             }
-            else if (prductNum == 2)
+            else if (productNum == 2)
             {
-                return _product2;
+                return ;
             }
-            else if (prductNum == 3)
+            else if (productNum == 3)
             {
-                return _product3;
+                return ;
             }
             else
             {
                 return null;
             }
         }
-        public Product FindStoreItemById(int id)
+        public StoreItem FindStoreItemById(int id)
         {
-            if(_product1.GetId() == id)
-            {
-                return _product1;
-            }
-            else if (_product2.GetId() == id)
-            {
-                return _product2;
-            }
-            else if (_product3.GetId() == id)
-            {
-                return _product3;
-            }
-            else
-            {
-                return null;
-            }
+            return items.Where(x => x.GetProduct().GetId() == id).FirstOrDefault();
         }
     }
 }

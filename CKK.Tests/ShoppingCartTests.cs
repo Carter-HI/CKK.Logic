@@ -67,7 +67,7 @@ namespace CKK.Tests
                 ShoppingCartItem expectingItem = myshoppingCart.GetProduct(1);
                 decimal expected = 123;
                 //Act
-                decimal actual = expectingItem.GetProduct().GetPrice();
+                decimal actual = expectingItem.GetTotal();
                 //Assert
                 Assert.Equal(expected, actual);
             }
