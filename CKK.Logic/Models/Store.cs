@@ -53,29 +53,14 @@ namespace CKK.Logic.Models
             {
                 foundItem.SetQuantity(foundItem.GetQuantity() - quantity);
             }
-            else if (foundItem.Count == 0)
+            else if (quantity < 0)
             {
-                
+                 quantity = 0;
             }
         }
-        public Product GetStoreItem(int productNum)
+        public List<StoreItem> GetStoreItem()
         {
-            if(productNum == 1)
-            {
-                return ;
-            }
-            else if (productNum == 2)
-            {
-                return ;
-            }
-            else if (productNum == 3)
-            {
-                return ;
-            }
-            else
-            {
-                return null;
-            }
+            
         }
         public StoreItem FindStoreItemById(int id)
         {
