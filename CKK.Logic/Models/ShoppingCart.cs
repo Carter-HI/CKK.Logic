@@ -26,23 +26,36 @@ namespace CKK.Logic.Models
             if (foundItem != null)
             {
                 foundItem.SetQuantity(foundItem.GetQuantity() + quantity);
+                return foundItem;
             }
             else
             {
                 items.Add(new ShoppingCartItem(prod, quantity));
             }
+            return null;
         }
-        public ShoppingCartItem RemoveProduct(Product prod, int quantity)
+        public ShoppingCartItem RemoveProduct(int id, int quantity)
         {
-            ShoppingCartItem foundItem = GetProductById(prod.GetId());
+            if (quantity <=0 )
+            {
+                return null;
+            }
+            ShoppingCartItem foundItem = GetProductById(id);
             if (foundItem != null)
             {
-                foundItem.SetQuantity(foundItem.GetQuantity() - quantity);
+                if (foundItem.GetQuantity() - quantity <= 0)
+                {
+                    items.Remove(foundItem);
+                    foundItem.SetQuantity(0);
+                    return foundItem;
+                }
+                else
+                {
+                    foundItem.SetQuantity(foundItem.GetQuantity() - quantity);
+                    return foundItem;
+                }
             }
-            else if (quantity <= 0)
-            {
-                items.Remove(foundItem);
-            }
+                return null;
         }
         public ShoppingCartItem GetProductById(int id)
         {
@@ -51,12 +64,12 @@ namespace CKK.Logic.Models
         public decimal GetTotal()
         {
             var grandtotal = 0m;
-
+            
             return grandtotal;
         }
-        public ShoppingCartItem GetProduct()
+        public List<ShoppingCartItem> GetProducts()
         {
-
+            return items;
         }
     }
 }

@@ -34,33 +34,46 @@ namespace CKK.Logic.Models
             _name = name;
         }
 
-       public void AddStoreItem(Product prod, int quantity)
+       public StoreItem AddStoreItem(Product prod, int quantity)
         {
             StoreItem foundItem = FindStoreItemById(prod.GetId());
             if(foundItem != null)
             {
                 foundItem.SetQuantity(foundItem.GetQuantity() + quantity);
+                return foundItem;
             }
             else
             {
                 items.Add(new StoreItem(prod, quantity));
             }
+            return null;
         }
-        public void RemoveStoreItem(Product prod, int quantity)
+        public StoreItem RemoveStoreItem(int id, int quantity)
         {
-            StoreItem foundItem = FindStoreItemById(prod.GetId());
+            if (quantity <= 0)
+            {
+                return null;
+            }
+            StoreItem foundItem = FindStoreItemById(id);
             if (foundItem != null)
             {
-                foundItem.SetQuantity(foundItem.GetQuantity() - quantity);
+                if (foundItem.GetQuantity() - quantity <= 0)
+                {
+                    items.Remove(foundItem);
+                    foundItem.SetQuantity(0);
+                    return foundItem;
+                }
+                else
+                {
+                    foundItem.SetQuantity(foundItem.GetQuantity() - quantity);
+                    return foundItem;
+                }
             }
-            else if (quantity < 0)
-            {
-                 quantity = 0;
-            }
+            return null;
         }
-        public List<StoreItem> GetStoreItem()
+        public List<StoreItem> GetStoreItems()
         {
-            
+            return items;
         }
         public StoreItem FindStoreItemById(int id)
         {
