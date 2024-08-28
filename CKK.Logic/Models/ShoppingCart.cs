@@ -60,7 +60,7 @@ namespace CKK.Logic.Models
         public ShoppingCartItem GetProductById(int id)
         {
             
-            return items.Where(x => x.GetProduct().GetId() == id).First();
+            return items.Where(x => x.GetProduct().GetId() == id).FirstOrDefault();
         }
         public decimal GetTotal()
         {
