@@ -59,7 +59,6 @@ namespace CKK.Logic.Models
             {
                 if (foundItem.GetQuantity() - quantity <= 0)
                 {
-                    items.Remove(foundItem);
                     foundItem.SetQuantity(0);
                     return foundItem;
                 }
