@@ -64,7 +64,11 @@ namespace CKK.Logic.Models
         public decimal GetTotal()
         {
             var grandtotal = 0m;
-            
+            foreach(var item in items)
+            {
+                grandtotal += item.GetTotal();
+            }
+
             return grandtotal;
         }
         public List<ShoppingCartItem> GetProducts()
