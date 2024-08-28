@@ -31,8 +31,6 @@ namespace CKK.Logic.Models
             else
             {
                 items.Add(new ShoppingCartItem(prod, quantity));
-                foundItem.SetQuantity(foundItem.GetQuantity() + quantity);
-                return foundItem;
             }
             return null;
         }
