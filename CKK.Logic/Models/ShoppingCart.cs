@@ -30,7 +30,9 @@ namespace CKK.Logic.Models
             }
             else
             {
-                items.Add(new ShoppingCartItem(prod, quantity));
+                ShoppingCartItem temp = new ShoppingCartItem(prod, quantity);
+                items.Add(temp);
+                return temp;
             }
             return null;
         }

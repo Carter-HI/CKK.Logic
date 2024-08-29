@@ -44,7 +44,9 @@ namespace CKK.Logic.Models
             }
             else
             {
-                items.Add(new StoreItem(prod, quantity));
+                StoreItem temp = new StoreItem(prod, quantity); 
+                items.Add(temp); 
+                return temp;
             }
             return null;
         }
