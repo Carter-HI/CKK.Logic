@@ -48,7 +48,6 @@ namespace CKK.Logic.Models
                 items.Add(temp); 
                 return temp;
             }
-            return null;
         }
         public StoreItem RemoveStoreItem(int id, int quantity)
         {

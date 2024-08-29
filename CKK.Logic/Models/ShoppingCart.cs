@@ -34,7 +34,6 @@ namespace CKK.Logic.Models
                 items.Add(temp);
                 return temp;
             }
-            return null;
         }
         public ShoppingCartItem RemoveProduct(int id, int quantity)
         {
