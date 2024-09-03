@@ -22,6 +22,10 @@ namespace CKK.Logic.Models
         }
         public ShoppingCartItem AddProduct(Product prod, int quantity)
         {
+            if (quantity <= 0)
+            {
+                return null;
+            }
             ShoppingCartItem foundItem = GetProductById(prod.GetId());
             if (foundItem != null)
             {
