@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace CKK.Logic.Models
 {
-    public class Customer
+    public class Customer : Entity
     {
-        private int _id;
-        private string _name = "";
+        public Customer(int id, string name) : base(id, name) { }
         private string _address = "";
 
 

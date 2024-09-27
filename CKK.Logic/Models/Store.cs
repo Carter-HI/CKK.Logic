@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace CKK.Logic.Models
 {
-    public class Store
+    public class Store : Entity
     {
 
 
-        private int _id;
-        private string _name = "";
+        public Store(int id, string name) : base(id, name)
+        {
+
+        }
         private List<StoreItem> items = new List<StoreItem>();
         
 

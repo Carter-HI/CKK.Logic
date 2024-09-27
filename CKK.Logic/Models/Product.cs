@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace CKK.Logic.Models
 {
-    public class Product
+    public class Product : Entity
     {
-        private int _id;
-        private string _name = "";
+        public Product(int id, string name) : base(id, name)
         private decimal _price;
 
 
