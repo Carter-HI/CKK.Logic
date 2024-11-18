@@ -12,7 +12,6 @@ namespace CKK.Logic.Models
     {
 
 
-        public Store(int id, string name) {}
         private List<StoreItem> items = new List<StoreItem>();
         
 

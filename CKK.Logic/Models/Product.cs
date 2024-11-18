@@ -9,7 +9,7 @@ namespace CKK.Logic.Models
 {
     public class Product : Entity
     {
-        public Product(int id, string name)  { }
+
         private decimal _price;
 
        public decimal Price { get; set; }
