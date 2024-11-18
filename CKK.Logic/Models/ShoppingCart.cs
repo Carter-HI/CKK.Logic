@@ -17,7 +17,7 @@ namespace CKK.Logic.Models
         }
         public int GetCustomerId()
         {
-                return _customer.GetId();
+                return _customer.Id;
             
         }
         public ShoppingCartItem AddProduct(Product prod, int quantity)
@@ -26,7 +26,7 @@ namespace CKK.Logic.Models
             {
                 return null;
             }
-            ShoppingCartItem foundItem = GetProductById(prod.GetId());
+            ShoppingCartItem foundItem = GetProductById(prod.Id);
             if (foundItem != null)
             {
                 foundItem.SetQuantity(foundItem.GetQuantity() + quantity);
@@ -65,7 +65,7 @@ namespace CKK.Logic.Models
         public ShoppingCartItem GetProductById(int id)
         {
             
-            return items.Where(x => x.GetProduct().GetId() == id).FirstOrDefault();
+            return items.Where(x => x.GetProduct().Id == id).FirstOrDefault();
         }
         public decimal GetTotal()
         {

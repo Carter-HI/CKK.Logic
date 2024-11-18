@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CKK.Logic.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,35 +9,10 @@ namespace CKK.Logic.Models
 {
     public class Customer : Entity
     {
-        public Customer(int id, string name) : base(id, name) { }
+        public Customer(int id, string name)  { }
         private string _address = "";
 
+        string Address { get; set; }
 
-        public int GetId()
-        {
-            return _id;
-        }
-
-        public void SetId(int id)
-        {
-            _id = id;
-        }
-
-        public string GetName()
-        {
-            return _name;
-        }
-        public void SetName(string name)
-        {
-            _name = name;
-        }
-        public string GetAddress()
-        {
-            return _address;
-        }
-        public void SetAddress(string address)
-        {
-            _address = address;
-        }
     }
 }

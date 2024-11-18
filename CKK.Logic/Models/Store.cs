@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CKK.Logic.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -11,30 +12,12 @@ namespace CKK.Logic.Models
     {
 
 
-        public Store(int id, string name) : base(id, name)
-        {
-
-        }
+        public Store(int id, string name) {}
         private List<StoreItem> items = new List<StoreItem>();
         
 
 
-        public int GetId()
-        {
-            return _id;
-        }
-        public void SetId(int id)
-        {
-            _id = id;
-        }
-        public string GetName()
-        {
-            return _name;
-        }
-        public void SetName(string name)
-        {
-            _name = name;
-        }
+
 
        public StoreItem AddStoreItem(Product prod, int quantity)
         {
@@ -42,7 +25,7 @@ namespace CKK.Logic.Models
             {
                 return null;
             }
-            StoreItem foundItem = FindStoreItemById(prod.GetId());
+            StoreItem foundItem = FindStoreItemById(prod.Id);
             if(foundItem != null)
             {
                 foundItem.SetQuantity(foundItem.GetQuantity() + quantity);
@@ -84,7 +67,7 @@ namespace CKK.Logic.Models
         public StoreItem FindStoreItemById(int id)
         {
             
-            return items.Where(x => x.GetProduct().GetId() == id).FirstOrDefault();
+            return items.Where(x => x.GetProduct().Id == id).FirstOrDefault();
         }
     }
 }

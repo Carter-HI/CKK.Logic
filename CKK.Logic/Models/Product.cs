@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CKK.Logic.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,36 +9,10 @@ namespace CKK.Logic.Models
 {
     public class Product : Entity
     {
-        public Product(int id, string name) : base(id, name)
+        public Product(int id, string name)  { }
         private decimal _price;
 
+       public decimal Price { get; set; }
 
-        public void SetId(int id)
-        {
-            _id = id;
-        }
-
-        public int GetId()
-        {
-            return _id;
-        }
-        public string GetName()
-        {
-            return _name;
-        }
-        public void SetName(string name)
-        {
-            _name = name;
-        }
-
-        public decimal GetPrice()
-        {
-            return _price;
-        }
-
-        public void SetPrice(decimal price)
-        {
-            _price = price;
-        }
     }
 }
