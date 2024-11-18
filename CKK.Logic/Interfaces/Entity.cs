@@ -11,4 +11,4 @@ namespace CKK.Logic.Interfaces
         public int Id { get; set; }
         public string name { get; set; }
     }
-}
+} 
