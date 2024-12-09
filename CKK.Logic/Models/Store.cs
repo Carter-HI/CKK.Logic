@@ -5,10 +5,11 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using CKK.Logic.Interfaces;
 
 namespace CKK.Logic.Models
 {
-    public class Store : Entity
+    public class Store : Entity , IStore
     {
 
 
