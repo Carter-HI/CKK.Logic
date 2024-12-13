@@ -28,12 +28,7 @@ namespace CKK.Logic.Models
             {
                 throw new InventoryItemStockTooLowException();
             }
-            else
-            {
-                if (quantity <= 0)
-                {
-                    return null;
-                }
+          
                 ShoppingCartItem foundItem = GetProductById(prod.Id);
                 if (foundItem != null)
                 {
@@ -46,8 +41,8 @@ namespace CKK.Logic.Models
                     items.Add(temp);
                     return temp;
                 }
-            } 
-        }
+        } 
+        
         public ShoppingCartItem RemoveProduct(int id, int quantity)
         {
             ShoppingCartItem foundItem = GetProductById(id);

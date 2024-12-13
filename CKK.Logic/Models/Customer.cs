@@ -12,7 +12,7 @@ namespace CKK.Logic.Models
   
         private string _address = "";
 
-        string Address { get; set; }
+        public string Address { get; set; }
 
     }
 }

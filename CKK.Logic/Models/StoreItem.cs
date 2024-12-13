@@ -9,8 +9,7 @@ namespace CKK.Logic.Models
 {
     public class StoreItem : InventoryItem
     {
-        private Product Product;
-        private int Quantity;
+      
 
         public StoreItem(Product product, int quantity)
         {
