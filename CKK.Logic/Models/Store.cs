@@ -6,6 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using CKK.Logic.Interfaces;
+using CKK.Logic.Exceptions;
 
 namespace CKK.Logic.Models
 {
@@ -21,6 +22,10 @@ namespace CKK.Logic.Models
 
        public StoreItem AddStoreItem(Product prod, int quantity)
         {
+            if (quantity < 0)
+            {
+                throw new InventoryItemStockTooLowException();
+            }
             if (quantity <= 0)
             {
                 return null;
@@ -40,11 +45,20 @@ namespace CKK.Logic.Models
         }
         public StoreItem RemoveStoreItem(int id, int quantity)
         {
+            StoreItem foundItem = FindStoreItemById(id);
+            if (foundItem == null)
+            {
+                throw new ProductDoesNotExistException();
+            }
+            if (quantity < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             if (quantity <= 0)
             {
                 return null;
             }
-            StoreItem foundItem = FindStoreItemById(id);
+         
             if (foundItem != null)
             {
                 if (foundItem.GetQuantity() - quantity <= 0)
@@ -66,7 +80,10 @@ namespace CKK.Logic.Models
         }
         public StoreItem FindStoreItemById(int id)
         {
-            
+            if (id < 0)
+            {
+                throw new InvalidIdException();
+            }
             return items.Where(x => x.GetProduct().Id == id).FirstOrDefault();
         }
     }

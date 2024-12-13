@@ -8,5 +8,6 @@ namespace CKK.Logic.Exceptions
 {
     public class InventoryItemStockTooLowException : Exception
     {
+
     }
 }
